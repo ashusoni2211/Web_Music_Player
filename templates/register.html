@@ -1,0 +1,45 @@
+{% extends 'base_visitor.html' %}
+{% block title %}Register{% endblock %}
+{% block register_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Register for an Account</h3>
+                    {% for message in messages %}
+                        <p style="color: brown;"><strong>{{ message }}</strong></p>
+                    {% endfor %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!--{% include 'form_template.html' %}-->
+                        <!-- NEW ENTRY-->
+                        <input type="text" name="first_name" placeholder="First Name" ><br><br>
+                        <input type="text" name="last_name" placeholder="Last Name"><br><br>
+                        <input type="text" name="username" placeholder="Username"><br><br>
+                        <input type="email" name="email" placeholder="Email"><br><br>
+                        <input type="password" name="password1" placeholder="Password"><br><br>
+                        <input type="password" name="password2" placeholder="Confirm Password"><br><br>
+                        
+                        <!-- Finished-->
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    Already have an account? <a href="{% url 'music:login_user' %">Click here</a> to log in.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
